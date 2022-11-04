@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\http\Request;
+use App\Models\Task;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,7 +20,10 @@ Route::get('/', function () {
 
 /*all tasks route*/
 Route::get('/task', function (){
-    return view('tasks.index');
+    $tasks=Task::all();
+    return view('tasks.index',[
+        'tasks'=>$tasks,
+        ]);
 })->name('task.index');
 
 /*create tasks route*/
